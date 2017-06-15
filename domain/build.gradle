@@ -26,4 +26,6 @@ dependencies {
     compile "com.android.support:support-annotations:$rootProject.ext.androidSupport"
     compile "com.google.dagger:dagger:$rootProject.ext.dagger"
     apt "com.google.dagger:dagger-compiler:$rootProject.ext.dagger"
+
+    compile project(path: ':data')
 }
