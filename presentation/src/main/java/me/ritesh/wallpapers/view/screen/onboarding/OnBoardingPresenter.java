@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import me.ritesh.wallpapers.data.model.module.OnBoardingScreenModule;
 import me.ritesh.wallpapers.data.model.objects.OnBoardingData;
+import me.ritesh.wallpapers.data.analytics.IAnalytics;
 import me.ritesh.wallpapers.domain.interactor.OnBoardingScreenInteractor;
 import me.ritesh.wallpapers.mapper.OnBoardingScreenModelDataMapper;
 import me.ritesh.wallpapers.view.IView;
@@ -17,8 +18,9 @@ import me.ritesh.wallpapers.view.presenter.BasePresenter;
 
 class OnBoardingPresenter extends BasePresenter<IView, OnBoardingScreenModule, List<OnBoardingData>> {
     @Inject
-    public OnBoardingPresenter(OnBoardingScreenInteractor interactor, OnBoardingScreenModelDataMapper modelDataMapper) {
-        super(interactor, modelDataMapper);
+    public OnBoardingPresenter(OnBoardingScreenInteractor interactor, OnBoardingScreenModelDataMapper modelDataMapper, IAnalytics analytics) {
+        super(interactor, modelDataMapper, analytics);
+        analytics.LogEventScreen("OnBoarding");
     }
 
     @Override

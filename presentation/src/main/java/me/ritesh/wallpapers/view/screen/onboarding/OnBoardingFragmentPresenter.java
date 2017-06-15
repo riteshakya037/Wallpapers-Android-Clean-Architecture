@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import javax.inject.Inject;
 
+import me.ritesh.wallpapers.data.analytics.IAnalytics;
 import me.ritesh.wallpapers.data.model.module.OnBoardingPageModule;
 import me.ritesh.wallpapers.data.model.objects.OnBoardingData;
 import me.ritesh.wallpapers.domain.interactor.OnBoardingPageInteractor;
@@ -17,8 +18,8 @@ import me.ritesh.wallpapers.view.presenter.BasePresenter;
 
 class OnBoardingFragmentPresenter extends BasePresenter<IView, OnBoardingPageModule, OnBoardingData> {
     @Inject
-    public OnBoardingFragmentPresenter(@NonNull OnBoardingPageInteractor interactor, @NonNull OnBoardingPageModelDataMapper modelDataMapper) {
-        super(interactor, modelDataMapper);
+    OnBoardingFragmentPresenter(@NonNull OnBoardingPageInteractor interactor, @NonNull OnBoardingPageModelDataMapper modelDataMapper, IAnalytics analytics) {
+        super(interactor, modelDataMapper, analytics);
     }
 
     @Override
