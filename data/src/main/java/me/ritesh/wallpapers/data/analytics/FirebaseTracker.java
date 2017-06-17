@@ -5,6 +5,8 @@ import android.os.Bundle;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.crash.FirebaseCrash;
 
+import me.ritesh.wallpapers.data.remoteconfig.IRemoteConfig;
+
 /**
  * @author Ritesh Shakya
  */
@@ -44,4 +46,10 @@ public class FirebaseTracker implements IAnalytics {
         FirebaseCrash.log(exception);
     }
 
+    @Override
+    public void setUserProperty(String experimentName, IRemoteConfig.ExperimentVariant experimentVariant) {
+        synchronized (firebaseAnalytics) {
+            firebaseAnalytics.setUserProperty(experimentName, experimentVariant.name());
+        }
+    }
 }

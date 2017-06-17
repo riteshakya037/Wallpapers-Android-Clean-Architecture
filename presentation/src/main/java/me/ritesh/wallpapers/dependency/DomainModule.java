@@ -5,6 +5,8 @@ import javax.inject.Named;
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.Scheduler;
+import me.ritesh.wallpapers.data.repository.IPhotos;
+import me.ritesh.wallpapers.domain.interactor.ImagePageInteractor;
 import me.ritesh.wallpapers.domain.interactor.OnBoardingPageInteractor;
 import me.ritesh.wallpapers.domain.interactor.OnBoardingScreenInteractor;
 
@@ -23,5 +25,12 @@ public class DomainModule {
     OnBoardingPageInteractor provideMainPageInteractor(@Named(Rx.MAIN) Scheduler observerScheduler,
                                                        @Named(Rx.IO) Scheduler subscribeScheduler) {
         return new OnBoardingPageInteractor(observerScheduler, subscribeScheduler);
+    }
+
+    @Provides
+    ImagePageInteractor providesImagePageInteractor(IPhotos iPhotos,
+                                                    @Named(Rx.MAIN) Scheduler mainScheduler,
+                                                    @Named(Rx.IO) Scheduler ioScheduler) {
+        return new ImagePageInteractor(iPhotos, mainScheduler, ioScheduler);
     }
 }

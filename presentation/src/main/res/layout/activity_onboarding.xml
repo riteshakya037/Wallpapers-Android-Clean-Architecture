@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_on_boarding_coordinator_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
 
     <android.support.percent.PercentFrameLayout
         android:layout_width="match_parent"
@@ -16,6 +17,7 @@
 
 
         <Button
+            android:id="@+id/activity_on_boarding_btn_next"
             style="@style/Base.Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,4 +39,18 @@
             app:tabIndicatorHeight="0dp" />
     </android.support.percent.PercentFrameLayout>
 
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/activity_on_boarding_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            app:layout_scrollFlags="enterAlways" />
+    </android.support.design.widget.AppBarLayout>
 </android.support.design.widget.CoordinatorLayout>
