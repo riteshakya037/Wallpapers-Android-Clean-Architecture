@@ -55,6 +55,11 @@ public abstract class BasePresenter<T extends IView, M, K> implements Presenter<
     }
 
     @Override
+    public T getView() {
+        return this.view;
+    }
+
+    @Override
     public void setView(T view) {
         this.view = view;
     }

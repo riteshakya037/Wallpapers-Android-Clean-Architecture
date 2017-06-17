@@ -7,6 +7,7 @@ import me.ritesh.wallpapers.dependency.DaggerApplicationComponent;
 import me.ritesh.wallpapers.dependency.DataModule;
 import me.ritesh.wallpapers.dependency.DomainModule;
 import me.ritesh.wallpapers.dependency.ImageModule;
+import me.ritesh.wallpapers.dependency.NetworkModule;
 import me.ritesh.wallpapers.dependency.Rx;
 
 /**
@@ -24,6 +25,7 @@ public class MainApplication extends Application {
 
     private void inject() {
         component = DaggerApplicationComponent.builder()
+                .networkModule(new NetworkModule())
                 .dataModule(new DataModule(this))
                 .domainModule(new DomainModule())
                 .imageModule(new ImageModule())

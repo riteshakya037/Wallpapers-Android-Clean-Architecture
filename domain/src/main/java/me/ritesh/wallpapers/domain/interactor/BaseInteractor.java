@@ -23,11 +23,11 @@ public abstract class BaseInteractor implements Interactor {
     }
 
     @Override
-    public void execute(@NonNull Observer UseCaseSubscriber, Object... params) {
+    public void execute(@NonNull Observer useCaseSubscriber, Object... params) {
         observable = this.buildUseCaseObservable(params)
                 .subscribeOn(subscribeScheduler)
                 .observeOn(observerScheduler);
-        observable.subscribe(UseCaseSubscriber);
+        observable.subscribe(useCaseSubscriber);
     }
 
     protected abstract Observable buildUseCaseObservable(Object... params);

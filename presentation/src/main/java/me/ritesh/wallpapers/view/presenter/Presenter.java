@@ -13,6 +13,8 @@ public interface Presenter<T, M> {
 
     void loadData(Object... params);
 
+    T getView();
+
     void setView(T view);
 
     M getModel();

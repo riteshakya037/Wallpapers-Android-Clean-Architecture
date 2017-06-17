@@ -30,6 +30,7 @@ ext {
     butterknife = '8.6.0'
     firebase = '11.0.0'
     parceler = '1.1.8'
+    circleImageView = '2.1.0'
 }
 
 allprojects {

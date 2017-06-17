@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +18,6 @@ import me.ritesh.wallpapers.view.presenter.Presenter;
  */
 
 public abstract class BaseFragment<M> extends Fragment implements IView<M> {
-    private static final String TAG = BaseFragment.class.getSimpleName();
     private final String SAVE_INSTANCE_STATE = "FragmentSaveInstanceState";
 
     @Override
@@ -85,7 +83,6 @@ public abstract class BaseFragment<M> extends Fragment implements IView<M> {
     @Override
     public void onResume() {
         super.onResume();
-        Log.i(TAG, "onResume: ");
         getPresenter().resume();
     }
 

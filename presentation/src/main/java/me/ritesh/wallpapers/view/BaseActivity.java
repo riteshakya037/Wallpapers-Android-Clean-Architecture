@@ -118,6 +118,11 @@ public abstract class BaseActivity<M> extends AppCompatActivity implements IView
     }
 
     @Override
+    public void onComplete(M model) {
+
+    }
+
+    @Override
     public void onStartActivity(Class<?> cls, Bundle bundle) {
         Intent intent = new Intent(this, cls);
         intent.putExtras(bundle);

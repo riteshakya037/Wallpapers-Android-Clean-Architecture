@@ -67,11 +67,13 @@ dependencies {
     compile "org.parceler:parceler-api:$rootProject.ext.parceler"
     apt "org.parceler:parceler:$rootProject.ext.parceler"
     compile "com.github.bumptech.glide:glide:$rootProject.ext.glide"
+    compile "de.hdodenhof:circleimageview:$rootProject.ext.circleImageView"
 
-    testCompile 'junit:junit:4.12'
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
 }
 
 apply plugin: 'com.google.gms.google-services'
