@@ -1,25 +1,35 @@
 package me.ritesh.wallpapers.view.screen.photo_listing;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+
+import org.parceler.Parcels;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observer;
 import me.ritesh.wallpapers.data.analytics.IAnalytics;
 import me.ritesh.wallpapers.data.model.module.PhotosModule;
+import me.ritesh.wallpapers.data.model.objects.PhotoModel;
 import me.ritesh.wallpapers.data.net.response.objects.PhotosListResponse;
+import me.ritesh.wallpapers.domain.interactor.CommentsInteractor;
 import me.ritesh.wallpapers.domain.interactor.ImagePageInteractor;
 import me.ritesh.wallpapers.mapper.PhotosDataMapper;
 import me.ritesh.wallpapers.view.IView;
 import me.ritesh.wallpapers.view.presenter.PaginatedBasePresenter;
+import me.ritesh.wallpapers.view.screen.comments.CommentsActivity;
 
 /**
  * @author Ritesh Shakya
  */
 
 public class PhotosPresenter extends PaginatedBasePresenter<IView, PhotosModule, PhotosListResponse> {
+    private CommentsInteractor commentsInteractor;
+
     @Inject
-    protected PhotosPresenter(@NonNull ImagePageInteractor interactor, @NonNull PhotosDataMapper modelDataMapper, IAnalytics analytics) {
+    protected PhotosPresenter(@NonNull ImagePageInteractor interactor, @NonNull PhotosDataMapper modelDataMapper, CommentsInteractor commentsInteractor, IAnalytics analytics) {
         super(interactor, modelDataMapper, analytics);
+        this.commentsInteractor = commentsInteractor;
         analytics.LogEventScreen("PhotosScreen");
     }
 
@@ -55,4 +65,18 @@ public class PhotosPresenter extends PaginatedBasePresenter<IView, PhotosModule,
         }
     }
 
+    public void onCommentClick(PhotoModel model) {
+        getAnalytics().LogEventClick("onCommentClick - " + model.getId());
+
+        if (getView() != null) {
+            Bundle bundle = new Bundle();
+            bundle.putParcelable(CommentsActivity.EXTRA_PHOTO, Parcels.wrap(model));
+
+            getView().onStartActivity(CommentsActivity.class, bundle);
+        }
+    }
+
+    public void getComments(Observer subscriber, String photoId) {
+        commentsInteractor.execute(subscriber, photoId);
+    }
 }
