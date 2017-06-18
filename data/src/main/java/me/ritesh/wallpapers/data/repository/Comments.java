@@ -1,7 +1,6 @@
 package me.ritesh.wallpapers.data.repository;
 
 import android.support.annotation.NonNull;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -11,7 +10,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -30,31 +28,30 @@ public class Comments implements IComments {
         this.databaseReference.keepSynced(true);
     }
 
-    @Override
-    public Observable getComments(String photoId) {
-        Query query = databaseReference.child(DatabaseNames.TABLE_COMMENTS).child(photoId).orderByChild("date");
+    @Override public Observable getComments(String photoId) {
+        Query query = databaseReference.child(DatabaseNames.TABLE_COMMENTS)
+                .child(photoId)
+                .orderByChild("date");
         return observe(query);
     }
 
-    @Override
-    public Observable sendComment(final String photoId, final CommentsModel message) {
+    @Override public Observable sendComment(final String photoId, final CommentsModel message) {
         return Observable.create(new ObservableOnSubscribe<Boolean>() {
-            @Override
-            public void subscribe(@io.reactivex.annotations.NonNull final ObservableEmitter<Boolean> emitter) throws Exception {
+            @Override public void subscribe(
+                    @io.reactivex.annotations.NonNull final ObservableEmitter<Boolean> emitter)
+                    throws Exception {
                 databaseReference.child(DatabaseNames.TABLE_COMMENTS)
                         .child(String.valueOf(photoId))
                         .push()
                         .setValue(message)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
+                            @Override public void onComplete(@NonNull Task<Void> task) {
                                 emitter.onNext(task.isSuccessful());
                                 emitter.onComplete();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
+                            @Override public void onFailure(@NonNull Exception e) {
                                 e.printStackTrace();
                                 emitter.onError(new FirebaseException(e.getMessage()));
                             }
@@ -65,23 +62,22 @@ public class Comments implements IComments {
 
     private Observable<DataSnapshot> observe(final Query ref) {
         return Observable.create(new ObservableOnSubscribe<DataSnapshot>() {
-            @Override
-            public void subscribe(@io.reactivex.annotations.NonNull final ObservableEmitter<DataSnapshot> emitter) throws Exception {
-                final ValueEventListener listener = ref.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        emitter.onNext(dataSnapshot);
-                    }
+            @Override public void subscribe(
+                    @io.reactivex.annotations.NonNull final ObservableEmitter<DataSnapshot> emitter)
+                    throws Exception {
+                final ValueEventListener listener =
+                        ref.addValueEventListener(new ValueEventListener() {
+                            @Override public void onDataChange(DataSnapshot dataSnapshot) {
+                                emitter.onNext(dataSnapshot);
+                            }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        emitter.onError(new FirebaseException(databaseError.getMessage()));
-                    }
-                });
+                            @Override public void onCancelled(DatabaseError databaseError) {
+                                emitter.onError(new FirebaseException(databaseError.getMessage()));
+                            }
+                        });
 
                 emitter.setCancellable(new Cancellable() {
-                    @Override
-                    public void cancel() throws Exception {
+                    @Override public void cancel() throws Exception {
                         ref.removeEventListener(listener);
                     }
                 });

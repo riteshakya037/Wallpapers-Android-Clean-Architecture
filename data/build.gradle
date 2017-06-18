@@ -35,5 +35,4 @@ dependencies {
     compile "io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxandroid"
     compile "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxjava"
     apt "org.parceler:parceler:$rootProject.ext.parceler"
-
 }

@@ -1,56 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_on_boarding_coordinator_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorWhite">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/activity_on_boarding_coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        >
 
     <android.support.percent.PercentFrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
 
         <android.support.v4.view.ViewPager
-            android:id="@+id/activity_on_boarding_view_pager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+                android:id="@+id/activity_on_boarding_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
 
 
         <Button
-            android:id="@+id/activity_on_boarding_btn_next"
-            style="@style/Base.Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
-            android:text="@string/let_s_do_this"
-            android:textAllCaps="false"
-            app:layout_marginBottomPercent="25%" />
+                android:id="@+id/activity_on_boarding_btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:text="@string/let_s_do_this"
+                android:textAllCaps="false"
+                app:layout_marginBottomPercent="25%"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                />
 
         <android.support.design.widget.TabLayout
-            android:id="@+id/activity_on_boarding_dot_tabs"
-            android:layout_width="match_parent"
-            android:layout_height="12dp"
-            android:layout_gravity="bottom"
-            app:layout_marginBottomPercent="5%"
-            app:tabBackground="@drawable/tab_selector"
-            app:tabGravity="center"
-            app:tabIndicatorHeight="0dp" />
+                android:id="@+id/activity_on_boarding_dot_tabs"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:layout_gravity="bottom"
+                app:layout_marginBottomPercent="5%"
+                app:tabBackground="@drawable/tab_selector"
+                app:tabGravity="center"
+                app:tabIndicatorHeight="0dp"
+                />
     </android.support.percent.PercentFrameLayout>
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:elevation="0dp">
+            android:id="@+id/app_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:elevation="0dp"
+            >
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/activity_on_boarding_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            app:layout_scrollFlags="enterAlways" />
+                android:id="@+id/activity_on_boarding_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                app:layout_scrollFlags="enterAlways"
+                />
     </android.support.design.widget.AppBarLayout>
 </android.support.design.widget.CoordinatorLayout>

@@ -6,46 +6,26 @@ import com.google.gson.annotations.Expose;
  * @author Ritesh Shakya
  */
 public class PhotoResponse {
-    @Expose
-    private int previewHeight;
-    @Expose
-    private int likes;
-    @Expose
-    private int favorites;
-    @Expose
-    private String tags;
-    @Expose
-    private int webformatHeight;
-    @Expose
-    private int views;
-    @Expose
-    private int webformatWidth;
-    @Expose
-    private int previewWidth;
-    @Expose
-    private int comments;
-    @Expose
-    private int downloads;
-    @Expose
-    private String pageURL;
-    @Expose
-    private String previewURL;
-    @Expose
-    private String webformatURL;
-    @Expose
-    private int imageWidth;
-    @Expose
-    private int user_id;
-    @Expose
-    private String user;
-    @Expose
-    private String type;
-    @Expose
-    private int id;
-    @Expose
-    private String userImageURL;
-    @Expose
-    private int imageHeight;
+    @Expose private int previewHeight;
+    @Expose private int likes;
+    @Expose private int favorites;
+    @Expose private String tags;
+    @Expose private int webformatHeight;
+    @Expose private int views;
+    @Expose private int webformatWidth;
+    @Expose private int previewWidth;
+    @Expose private int comments;
+    @Expose private int downloads;
+    @Expose private String pageURL;
+    @Expose private String previewURL;
+    @Expose private String webformatURL;
+    @Expose private int imageWidth;
+    @Expose private int user_id;
+    @Expose private String user;
+    @Expose private String type;
+    @Expose private int id;
+    @Expose private String userImageURL;
+    @Expose private int imageHeight;
 
     public int getPreviewHeight() {
         return previewHeight;

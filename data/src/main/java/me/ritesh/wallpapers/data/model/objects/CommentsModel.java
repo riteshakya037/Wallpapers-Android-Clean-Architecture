@@ -1,15 +1,13 @@
 package me.ritesh.wallpapers.data.model.objects;
 
-import org.parceler.Parcel;
-
 import java.util.Date;
+import org.parceler.Parcel;
 
 /**
  * @author Ritesh Shakya
  */
 
-@Parcel
-public class CommentsModel {
+@Parcel public class CommentsModel {
     Date date;
     String comment;
     String user;
@@ -23,19 +21,16 @@ public class CommentsModel {
         this.user = username;
     }
 
-    @Override
-    public boolean equals(Object o) {
+    @Override public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         CommentsModel that = (CommentsModel) o;
 
         return date.equals(that.date) && comment.equals(that.comment);
-
     }
 
-    @Override
-    public int hashCode() {
+    @Override public int hashCode() {
         int result = date.hashCode();
         result = 31 * result + comment.hashCode();
         return result;

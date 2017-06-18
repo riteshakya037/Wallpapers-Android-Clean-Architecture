@@ -1,8 +1,7 @@
 package me.ritesh.wallpapers.dependency;
 
-import javax.inject.Singleton;
-
 import dagger.Component;
+import javax.inject.Singleton;
 import me.ritesh.wallpapers.MainApplication;
 import me.ritesh.wallpapers.view.screen.comments.CommentsActivity;
 import me.ritesh.wallpapers.view.screen.onboarding.OnBoardingActivity;
@@ -14,17 +13,9 @@ import me.ritesh.wallpapers.view.screen.splash.SplashActivity;
  * @author Ritesh Shakya
  */
 
-@Singleton
-@Component(
-        modules = {
-                NetworkModule.class,
-                DataModule.class,
-                DomainModule.class,
-                Rx.class,
-                ImageModule.class
-        }
-)
-public interface ApplicationComponent {
+@Singleton @Component(modules = {
+        NetworkModule.class, DataModule.class, DomainModule.class, Rx.class, ImageModule.class
+}) public interface ApplicationComponent {
     void inject(MainApplication mainApplication);
 
     void inject(OnBoardingActivity onBoardingActivity);

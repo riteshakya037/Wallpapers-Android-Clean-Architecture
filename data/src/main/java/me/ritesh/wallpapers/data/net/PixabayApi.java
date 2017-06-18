@@ -1,8 +1,7 @@
 package me.ritesh.wallpapers.data.net;
 
-import java.util.Map;
-
 import io.reactivex.Observable;
+import java.util.Map;
 import me.ritesh.wallpapers.data.net.response.objects.PhotosListResponse;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
@@ -12,6 +11,5 @@ import retrofit2.http.QueryMap;
  */
 
 public interface PixabayApi {
-    @GET("api/")
-    Observable<PhotosListResponse> getPhotos(@QueryMap Map<String, String> options);
+    @GET("api/") Observable<PhotosListResponse> getPhotos(@QueryMap Map<String, String> options);
 }

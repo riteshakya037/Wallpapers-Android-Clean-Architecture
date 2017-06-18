@@ -1,17 +1,14 @@
 package me.ritesh.wallpapers.data.model.module;
 
-import org.parceler.Parcel;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import me.ritesh.wallpapers.data.model.objects.CommentsModel;
+import org.parceler.Parcel;
 
 /**
  * @author Ritesh Shakya
  */
-@Parcel
-public class CommentsModule {
+@Parcel public class CommentsModule {
     List<CommentsModel> commentsList = new ArrayList<>();
     int photoId;
     String imageUrl;
@@ -33,8 +30,7 @@ public class CommentsModule {
     }
 
     public void add(CommentsModel messageModel) {
-        if (!commentsList.contains(messageModel))
-            this.commentsList.add(messageModel);
+        if (!commentsList.contains(messageModel)) this.commentsList.add(messageModel);
     }
 
     public String getImageUrl() {
