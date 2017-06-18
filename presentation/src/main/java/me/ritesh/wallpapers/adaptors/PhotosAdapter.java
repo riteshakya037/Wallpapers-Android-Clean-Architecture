@@ -7,9 +7,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.reactivex.Observer;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
 import me.ritesh.wallpapers.R;
 import me.ritesh.wallpapers.data.model.objects.PhotoModel;
 import me.ritesh.wallpapers.imageloader.IImageLoader;
@@ -54,23 +60,63 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.MyViewHold
         TextView tvUser;
         @BindView(R.id.item_photos_screen_comments)
         TextView tvComments;
-        @BindView(R.id.item_photos_screen_image)
+        @BindView(R.id.activity_comments_image)
         ImageView ivPhotos;
         @BindView(R.id.item_photos_screen_user_image)
         CircleImageView ivUserImage;
         int comments = 0;
+        PhotoModel photoModel;
+        Observer subscriber;
 
         MyViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
+        @OnClick(R.id.item_photos_screen_comments)
+        public void onCommentClick() {
+            photosPresenter.onCommentClick(photoModel);
+        }
+
         public void setData(PhotoModel photoModel) {
+            if (this.photoModel != null && subscriber != null) {
+                subscriber.onComplete();
+                this.photoModel = null;
+            }
+            this.photoModel = photoModel;
+
             comments = 0;
             tvUser.setText(photoModel.getUser());
             imageLoader.loadImage(photoModel.getImgSrc(), ivPhotos);
             imageLoader.loadImage(photoModel.getUserImageURL(), ivUserImage);
+            subscriber = new Observer<DataSnapshot>() {
+
+                @Override
+                public void onError(Throwable e) {
+
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+
+                @Override
+                public void onSubscribe(@NonNull Disposable d) {
+
+                }
+
+                @Override
+                public void onNext(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.getKey().equals(String.valueOf(MyViewHolder.this.photoModel.getId()))) {
+                        comments = (int) dataSnapshot.getChildrenCount();
+                        updateCommentsNumber();
+                    }
+                }
+            };
+
             updateCommentsNumber();
+            photosPresenter.getComments(subscriber, String.valueOf(this.photoModel.getId()));
         }
 
         private void updateCommentsNumber() {

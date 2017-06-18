@@ -14,7 +14,7 @@ import me.ritesh.wallpapers.data.model.objects.PhotoModel;
 public class PhotosModule {
     List<PhotoModel> photoModels = new ArrayList<>();
 
-    private int pageNumber = 0;
+    private int pageNumber = 1;
     private int lastItemIndex = 0;
 
     public int getLastItemIndex() {

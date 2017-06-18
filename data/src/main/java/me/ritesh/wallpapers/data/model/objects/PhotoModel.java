@@ -2,8 +2,6 @@ package me.ritesh.wallpapers.data.model.objects;
 
 import org.parceler.Parcel;
 
-import java.util.ArrayList;
-
 /**
  * @author Ritesh Shakya
  */
@@ -62,4 +60,21 @@ public class PhotoModel {
 //        }
 //        this.tags = arrayList;
 //    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        PhotoModel model = (PhotoModel) o;
+
+        return id == model.id;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
 }

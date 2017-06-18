@@ -4,6 +4,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import me.ritesh.wallpapers.MainApplication;
+import me.ritesh.wallpapers.view.screen.comments.CommentsActivity;
 import me.ritesh.wallpapers.view.screen.onboarding.OnBoardingActivity;
 import me.ritesh.wallpapers.view.screen.onboarding.OnBoardingPagerFragment;
 import me.ritesh.wallpapers.view.screen.photo_listing.PhotosActivity;
@@ -33,4 +34,6 @@ public interface ApplicationComponent {
     void inject(SplashActivity splashActivity);
 
     void inject(PhotosActivity photosActivity);
+
+    void inject(CommentsActivity commentsActivity);
 }

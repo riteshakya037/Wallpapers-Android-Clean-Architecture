@@ -5,8 +5,18 @@
     <string name="no_comments">No comment</string>
     <string name="zero_comments">Comment</string>
     <string name="many_comments">%1$s Comments</string>
+    <string name="username">Username</string>
+    <string name="write_a_comment">Write a comment…</string>
     <plurals name="number_of_comments">
         <item quantity="one">@string/zero_comments</item>
         <item quantity="other">@string/many_comments</item>
+    </plurals>
+    <plurals name="time_in_minutes">
+        <item quantity="one">%1$d minute ago</item>
+        <item quantity="other">%1$d minutes ago</item>
+    </plurals>
+    <plurals name="time_in_hours">
+        <item quantity="one">%1$d hour ago</item>
+        <item quantity="other">%1$d hours ago</item>
     </plurals>
 </resources>

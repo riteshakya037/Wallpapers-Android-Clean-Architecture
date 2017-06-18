@@ -3,6 +3,7 @@
     package="me.ritesh.wallpapers">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
@@ -28,7 +29,8 @@
         <activity
             android:name=".view.screen.onboarding.OnBoardingActivity"
             android:label="" />
-        <activity android:name=".view.screen.photo_listing.PhotosActivity"></activity>
+        <activity android:name=".view.screen.photo_listing.PhotosActivity" />
+        <activity android:name=".view.screen.comments.CommentsActivity"></activity>
     </application>
 
 </manifest>

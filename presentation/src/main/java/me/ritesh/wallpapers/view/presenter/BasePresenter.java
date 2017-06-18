@@ -88,6 +88,9 @@ public abstract class BasePresenter<T extends IView, M, K> implements Presenter<
         view = null;
     }
 
+    public BaseInteractor getInteractor() {
+        return interactor;
+    }
     @Override
     public IAnalytics getAnalytics() {
         return analytics;
