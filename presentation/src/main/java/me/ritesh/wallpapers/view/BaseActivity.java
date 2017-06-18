@@ -10,14 +10,11 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-
+import butterknife.ButterKnife;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-
-import org.parceler.Parcels;
-
-import butterknife.ButterKnife;
 import me.ritesh.wallpapers.view.presenter.Presenter;
+import org.parceler.Parcels;
 
 /**
  * @author Ritesh Shakya
@@ -28,14 +25,12 @@ public abstract class BaseActivity<M> extends AppCompatActivity implements IView
 
     private Dialog errorDialog;
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         injectActivity();
         setContentView(getLayout());
         ButterKnife.bind(this);
-        if (getToolbarId() != null)
-            setSupportActionBar(getToolbarId());
+        if (getToolbarId() != null) setSupportActionBar(getToolbarId());
 
         initViews();
     }
@@ -44,71 +39,65 @@ public abstract class BaseActivity<M> extends AppCompatActivity implements IView
 
     protected abstract void injectActivity();
 
-
     protected abstract Toolbar getToolbarId();
 
-    protected abstract
-    @LayoutRes
-    int getLayout();
+    protected abstract @LayoutRes int getLayout();
 
-    @Override
-    protected void onSaveInstanceState(Bundle savedInstanceState) {
-        savedInstanceState.putParcelable(SAVE_INSTANCE_STATE, Parcels.wrap(getPresenter().getModel()));
+    @Override protected void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putParcelable(SAVE_INSTANCE_STATE,
+                Parcels.wrap(getPresenter().getModel()));
         super.onSaveInstanceState(savedInstanceState);
     }
 
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
+    @Override public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         if (savedInstanceState != null) {
-            getPresenter().setModel(Parcels.unwrap(savedInstanceState.getParcelable(SAVE_INSTANCE_STATE)));
+            getPresenter().setModel(
+                    Parcels.unwrap(savedInstanceState.getParcelable(SAVE_INSTANCE_STATE)));
         }
     }
 
-    @Override
-    protected void onStart() {
+    @Override protected void onStart() {
         super.onStart();
         getPresenter().setView(this);
     }
 
     protected abstract Presenter getPresenter();
 
-    @Override
-    protected void onStop() {
+    @Override protected void onStop() {
         super.onStop();
         getPresenter().stop();
     }
 
-
-    @Override
-    protected void onPause() {
+    @Override protected void onPause() {
         super.onPause();
         getPresenter().pause();
     }
 
-    @Override
-    protected void onResume() {
+    @Override protected void onResume() {
         super.onResume();
         getPresenter().resume();
     }
 
-    @Override
-    protected void onDestroy() {
+    @Override protected void onDestroy() {
         super.onDestroy();
         getPresenter().destroy();
     }
 
     protected boolean checkPlayServices() {
-        final int playServicesStatus = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this);
+        final int playServicesStatus =
+                GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this);
         if (playServicesStatus != ConnectionResult.SUCCESS) {
             if (errorDialog == null || !errorDialog.isShowing()) {
                 //If google play services in not available show an error dialog and return
-                errorDialog = GoogleApiAvailability.getInstance().getErrorDialog(this, playServicesStatus, 0, new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialogInterface) {
-                        finish();
-                    }
-                });
+                errorDialog = GoogleApiAvailability.getInstance()
+                        .getErrorDialog(this, playServicesStatus, 0,
+                                new DialogInterface.OnCancelListener() {
+                                    @Override
+                                    public void onCancel(DialogInterface dialogInterface) {
+                                        finish();
+                                    }
+                                });
                 errorDialog.show();
             }
             return false;
@@ -117,25 +106,22 @@ public abstract class BaseActivity<M> extends AppCompatActivity implements IView
         return true;
     }
 
-    @Override
-    public void onComplete(M model) {
+    @Override public void onComplete(M model) {
 
     }
 
-    @Override
-    public void onStartActivity(Class<?> cls, Bundle bundle) {
+    @Override public void onStartActivity(Class<?> cls, Bundle bundle) {
         Intent intent = new Intent(this, cls);
         intent.putExtras(bundle);
         startActivity(intent);
     }
 
-    @Override
-    public void onError(String error) {
-        if (getCoordinatorLayout() != 0)
-            Snackbar.make(findViewById(getCoordinatorLayout()), error, Snackbar.LENGTH_SHORT).show();
+    @Override public void onError(String error) {
+        if (getCoordinatorLayout() != 0) {
+            Snackbar.make(findViewById(getCoordinatorLayout()), error, Snackbar.LENGTH_SHORT)
+                    .show();
+        }
     }
 
-    protected abstract
-    @IdRes
-    int getCoordinatorLayout();
+    protected abstract @IdRes int getCoordinatorLayout();
 }

@@ -21,9 +21,9 @@ android {
                 keyPassword KEY_PASSWORD
                 storeFile file("$rootDir/debug.keystore")
                 storePassword KEYSTORE_PASSWORD
-            }
-            catch (ignored) {
-                throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
+            } catch (ignored) {
+                throw new InvalidUserDataException(
+                        "You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
             }
         }
     }

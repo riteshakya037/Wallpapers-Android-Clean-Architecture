@@ -5,13 +5,12 @@ import org.parceler.Parcel;
 /**
  * @author Ritesh Shakya
  */
-@Parcel
-public class PhotoModel {
+@Parcel public class PhotoModel {
     private int id;
     private String imgSrc;
     private String user;
     private String userImageURL;
-//    private ArrayList<String> tags;
+    //    private ArrayList<String> tags;
 
     public PhotoModel() {
         // Required by Parcel
@@ -49,32 +48,28 @@ public class PhotoModel {
         this.userImageURL = userImageURL;
     }
 
-//    public ArrayList<String> getTags() {
-//        return tags;
-//    }
-//
-//    public void setTags(String[] tags) {
-//        ArrayList<String> arrayList = new ArrayList<>(tags.length);
-//        for (String tag : arrayList) {
-//            arrayList.add(tag);
-//        }
-//        this.tags = arrayList;
-//    }
+    //    public ArrayList<String> getTags() {
+    //        return tags;
+    //    }
+    //
+    //    public void setTags(String[] tags) {
+    //        ArrayList<String> arrayList = new ArrayList<>(tags.length);
+    //        for (String tag : arrayList) {
+    //            arrayList.add(tag);
+    //        }
+    //        this.tags = arrayList;
+    //    }
 
-
-    @Override
-    public boolean equals(Object o) {
+    @Override public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         PhotoModel model = (PhotoModel) o;
 
         return id == model.id;
-
     }
 
-    @Override
-    public int hashCode() {
+    @Override public int hashCode() {
         return id;
     }
 }

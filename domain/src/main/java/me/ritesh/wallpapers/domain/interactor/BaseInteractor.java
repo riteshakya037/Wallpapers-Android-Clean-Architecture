@@ -1,7 +1,6 @@
 package me.ritesh.wallpapers.domain.interactor;
 
 import android.support.annotation.NonNull;
-
 import dagger.internal.Preconditions;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -22,8 +21,7 @@ public abstract class BaseInteractor implements Interactor {
         this.subscribeScheduler = Preconditions.checkNotNull(subscribeScheduler);
     }
 
-    @Override
-    public void execute(@NonNull Observer useCaseSubscriber, Object... params) {
+    @Override public void execute(@NonNull Observer useCaseSubscriber, Object... params) {
         observable = this.buildUseCaseObservable(params)
                 .subscribeOn(subscribeScheduler)
                 .observeOn(observerScheduler);
@@ -32,9 +30,7 @@ public abstract class BaseInteractor implements Interactor {
 
     protected abstract Observable buildUseCaseObservable(Object... params);
 
-    @Override
-    public void unsubscribe() {
-        if (observable != Observable.empty())
-            observable.unsubscribeOn(observerScheduler);
+    @Override public void unsubscribe() {
+        if (observable != Observable.empty()) observable.unsubscribeOn(observerScheduler);
     }
 }

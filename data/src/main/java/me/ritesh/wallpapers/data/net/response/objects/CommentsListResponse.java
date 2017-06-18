@@ -1,7 +1,6 @@
 package me.ritesh.wallpapers.data.net.response.objects;
 
 import java.util.List;
-
 import me.ritesh.wallpapers.data.model.objects.CommentsModel;
 
 /**

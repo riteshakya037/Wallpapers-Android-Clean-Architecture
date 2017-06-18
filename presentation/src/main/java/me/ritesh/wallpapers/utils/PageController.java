@@ -24,8 +24,7 @@ public class PageController extends RecyclerView.OnScrollListener {
         loading = isLoadFinish;
     }
 
-    @Override
-    public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+    @Override public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
         super.onScrolled(recyclerView, dx, dy);
 
         if (dy > 0) //check for scroll down

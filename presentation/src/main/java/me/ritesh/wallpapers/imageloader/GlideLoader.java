@@ -4,7 +4,6 @@ import android.app.Application;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.MemoryCategory;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
@@ -23,35 +22,31 @@ public class GlideLoader implements IImageLoader {
         Glide.get(context).setMemoryCategory(MemoryCategory.LOW);
     }
 
-    @Override
-    public void loadImage(String url, ImageView holder) {
+    @Override public void loadImage(String url, ImageView holder) {
         clear(holder);
 
-        Glide.with(context)
-                .load(url)
-                .centerCrop()
-                .crossFade()
-                .into(holder);
+        Glide.with(context).load(url).centerCrop().crossFade().into(holder);
     }
 
-    @Override
-    public void loadImage(String url, int resourceIdPlaceHolder, ImageView holder, final ProgressBar progressBar) {
+    @Override public void loadImage(String url, int resourceIdPlaceHolder, ImageView holder,
+            final ProgressBar progressBar) {
         clear(holder);
         Glide.with(context)
                 .load(url)
                 .centerCrop()
                 .placeholder(resourceIdPlaceHolder)
                 .listener(new RequestListener<String, GlideDrawable>() {
-                    @Override
-                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                    @Override public boolean onException(Exception e, String model,
+                            Target<GlideDrawable> target, boolean isFirstResource) {
                         if (progressBar != null) {
                             progressBar.setVisibility(View.GONE);
                         }
                         return false;
                     }
 
-                    @Override
-                    public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                    @Override public boolean onResourceReady(GlideDrawable resource, String model,
+                            Target<GlideDrawable> target, boolean isFromMemoryCache,
+                            boolean isFirstResource) {
                         if (progressBar != null) {
                             progressBar.setVisibility(View.GONE);
                         }
@@ -61,14 +56,10 @@ public class GlideLoader implements IImageLoader {
                 .into(holder);
     }
 
-    @Override
-    public void loadImage(int resourceId, ImageView holder) {
+    @Override public void loadImage(int resourceId, ImageView holder) {
         clear(holder);
 
-        Glide.with(context)
-                .load(resourceId)
-                .crossFade()
-                .into(holder);
+        Glide.with(context).load(resourceId).crossFade().into(holder);
     }
 
     private void clear(ImageView holder) {

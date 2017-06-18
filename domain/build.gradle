@@ -15,7 +15,6 @@ android {
         targetCompatibility rootProject.ext.sourceCompatibility
     }
     buildToolsVersion rootProject.ext.buildToolsVersion
-
 }
 
 dependencies {

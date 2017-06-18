@@ -1,14 +1,12 @@
 package me.ritesh.wallpapers.data.model.module;
 
-import org.parceler.Parcel;
-
 import me.ritesh.wallpapers.data.model.objects.OnBoardingData;
+import org.parceler.Parcel;
 
 /**
  * @author Ritesh Shakya
  */
-@Parcel
-public class OnBoardingPageModule {
+@Parcel public class OnBoardingPageModule {
     OnBoardingData onBoardingData = new OnBoardingData();
 
     public OnBoardingData getOnBoardingData() {

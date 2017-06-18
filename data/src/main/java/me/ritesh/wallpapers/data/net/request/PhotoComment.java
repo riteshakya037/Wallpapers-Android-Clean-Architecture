@@ -1,20 +1,18 @@
 package me.ritesh.wallpapers.data.net.request;
 
-import org.parceler.Parcel;
-
 import java.util.Date;
+import org.parceler.Parcel;
 
 /**
  * @author Ritesh Shakya
  */
 
-@Parcel
-public class PhotoComment {
+@Parcel public class PhotoComment {
     private Date date;
     private String comment;
 
     public PhotoComment() {
-//        Required by Parcel
+        //        Required by Parcel
     }
 
     public PhotoComment(Date date, String comment) {

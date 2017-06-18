@@ -6,12 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.google.firebase.database.DataSnapshot;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.google.firebase.database.DataSnapshot;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
@@ -34,36 +32,31 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.MyViewHold
         this.photosPresenter = photosPresenter;
     }
 
-    @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_photos_screen, parent, false);
+    @Override public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_photos_screen, parent, false);
 
         return new MyViewHolder(itemView);
     }
 
-    @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    @Override public void onBindViewHolder(MyViewHolder holder, int position) {
         PhotoModel photoModel = photosPresenter.getModel().getPhotoModels().get(position);
         holder.setData(photoModel);
     }
 
-    @Override
-    public int getItemCount() {
+    @Override public int getItemCount() {
         if (photosPresenter.getModel() == null) {
             return 0;
         }
-        return photosPresenter.getModel().getPhotoModels() == null ? 0 : photosPresenter.getModel().getPhotoModels().size();
+        return photosPresenter.getModel().getPhotoModels() == null ? 0
+                : photosPresenter.getModel().getPhotoModels().size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.item_photos_screen_user)
-        TextView tvUser;
-        @BindView(R.id.item_photos_screen_comments)
-        TextView tvComments;
-        @BindView(R.id.activity_comments_image)
-        ImageView ivPhotos;
-        @BindView(R.id.item_photos_screen_user_image)
-        CircleImageView ivUserImage;
+        @BindView(R.id.item_photos_screen_user) TextView tvUser;
+        @BindView(R.id.item_photos_screen_comments) TextView tvComments;
+        @BindView(R.id.activity_comments_image) ImageView ivPhotos;
+        @BindView(R.id.item_photos_screen_user_image) CircleImageView ivUserImage;
         int comments = 0;
         PhotoModel photoModel;
         Observer subscriber;
@@ -73,8 +66,7 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.MyViewHold
             ButterKnife.bind(this, itemView);
         }
 
-        @OnClick(R.id.item_photos_screen_comments)
-        public void onCommentClick() {
+        @OnClick(R.id.item_photos_screen_comments) public void onCommentClick() {
             photosPresenter.onCommentClick(photoModel);
         }
 
@@ -91,24 +83,21 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.MyViewHold
             imageLoader.loadImage(photoModel.getUserImageURL(), ivUserImage);
             subscriber = new Observer<DataSnapshot>() {
 
-                @Override
-                public void onError(Throwable e) {
+                @Override public void onError(Throwable e) {
 
                 }
 
-                @Override
-                public void onComplete() {
+                @Override public void onComplete() {
 
                 }
 
-                @Override
-                public void onSubscribe(@NonNull Disposable d) {
+                @Override public void onSubscribe(@NonNull Disposable d) {
 
                 }
 
-                @Override
-                public void onNext(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.getKey().equals(String.valueOf(MyViewHolder.this.photoModel.getId()))) {
+                @Override public void onNext(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.getKey()
+                            .equals(String.valueOf(MyViewHolder.this.photoModel.getId()))) {
                         comments = (int) dataSnapshot.getChildrenCount();
                         updateCommentsNumber();
                     }
@@ -123,9 +112,9 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.MyViewHold
             if (comments == 0) {
                 tvComments.setText(R.string.no_comments);
             } else {
-                tvComments.setText(
-                        tvComments.getContext().getResources()
-                                .getQuantityString(R.plurals.number_of_comments, comments, comments));
+                tvComments.setText(tvComments.getContext()
+                        .getResources()
+                        .getQuantityString(R.plurals.number_of_comments, comments, comments));
             }
         }
     }

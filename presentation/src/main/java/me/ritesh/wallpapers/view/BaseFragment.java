@@ -7,11 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import org.parceler.Parcels;
-
 import butterknife.ButterKnife;
 import me.ritesh.wallpapers.view.presenter.Presenter;
+import org.parceler.Parcels;
 
 /**
  * @author Ritesh Shakya
@@ -20,15 +18,13 @@ import me.ritesh.wallpapers.view.presenter.Presenter;
 public abstract class BaseFragment<M> extends Fragment implements IView<M> {
     private final String SAVE_INSTANCE_STATE = "FragmentSaveInstanceState";
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    @Override public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         injectFragment();
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
-                             Bundle savedInstanceState) {
+    @Override public View onCreateView(LayoutInflater inflater, final ViewGroup container,
+            Bundle savedInstanceState) {
         View rootView = inflater.inflate(getLayoutId(), container, false);
         ButterKnife.bind(this, rootView);
         getPresenter().setView(this);
@@ -39,57 +35,49 @@ public abstract class BaseFragment<M> extends Fragment implements IView<M> {
 
     protected abstract void injectFragment();
 
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        savedInstanceState.putParcelable(SAVE_INSTANCE_STATE, Parcels.wrap(getPresenter().getModel()));
+    @Override public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putParcelable(SAVE_INSTANCE_STATE,
+                Parcels.wrap(getPresenter().getModel()));
         super.onSaveInstanceState(savedInstanceState);
     }
 
-    @Override
-    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+    @Override public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
         if (savedInstanceState != null) {
-            getPresenter().setModel(Parcels.unwrap(savedInstanceState.getParcelable(SAVE_INSTANCE_STATE)));
+            getPresenter().setModel(
+                    Parcels.unwrap(savedInstanceState.getParcelable(SAVE_INSTANCE_STATE)));
         }
     }
 
     protected abstract Presenter getPresenter();
 
-    @Override
-    public void onStartActivity(Class<?> cls, Bundle bundle) {
+    @Override public void onStartActivity(Class<?> cls, Bundle bundle) {
         Intent intent = new Intent(getContext(), cls);
         intent.putExtras(bundle);
         startActivity(intent);
     }
 
-    @Override
-    public void onError(String message) {
+    @Override public void onError(String message) {
 
     }
 
-    @Override
-    public void onStop() {
+    @Override public void onStop() {
         super.onStop();
         getPresenter().stop();
     }
 
-
-    @Override
-    public void onPause() {
+    @Override public void onPause() {
         super.onPause();
         getPresenter().pause();
     }
 
-    @Override
-    public void onResume() {
+    @Override public void onResume() {
         super.onResume();
         getPresenter().resume();
     }
 
-    @Override
-    public void onDestroy() {
+    @Override public void onDestroy() {
         super.onDestroy();
         getPresenter().destroy();
     }
-
 }

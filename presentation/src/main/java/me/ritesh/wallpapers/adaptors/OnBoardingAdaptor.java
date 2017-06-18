@@ -3,9 +3,7 @@ package me.ritesh.wallpapers.adaptors;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-
 import java.util.List;
-
 import me.ritesh.wallpapers.data.model.objects.OnBoardingData;
 import me.ritesh.wallpapers.view.screen.onboarding.OnBoardingPagerFragment;
 
@@ -21,13 +19,11 @@ public class OnBoardingAdaptor extends FragmentStatePagerAdapter {
         super(fm);
     }
 
-    @Override
-    public int getCount() {
+    @Override public int getCount() {
         return data == null ? 0 : data.size();
     }
 
-    @Override
-    public Fragment getItem(int position) {
+    @Override public Fragment getItem(int position) {
         return OnBoardingPagerFragment.getInstance(data.get(position));
     }
 

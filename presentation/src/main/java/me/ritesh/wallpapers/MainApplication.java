@@ -1,7 +1,6 @@
 package me.ritesh.wallpapers;
 
 import android.app.Application;
-
 import me.ritesh.wallpapers.dependency.ApplicationComponent;
 import me.ritesh.wallpapers.dependency.DaggerApplicationComponent;
 import me.ritesh.wallpapers.dependency.DataModule;
@@ -17,8 +16,7 @@ import me.ritesh.wallpapers.dependency.Rx;
 public class MainApplication extends Application {
     private ApplicationComponent component;
 
-    @Override
-    public void onCreate() {
+    @Override public void onCreate() {
         super.onCreate();
         inject();
     }

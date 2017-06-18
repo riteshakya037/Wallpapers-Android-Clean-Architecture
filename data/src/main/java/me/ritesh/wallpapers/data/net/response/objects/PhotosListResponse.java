@@ -2,7 +2,6 @@ package me.ritesh.wallpapers.data.net.response.objects;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
 /**
@@ -10,11 +9,9 @@ import java.util.List;
  */
 
 public class PhotosListResponse {
-    @Expose
-    private int totalHits;
+    @Expose private int totalHits;
 
-    @SerializedName("hits")
-    private List<PhotoResponse> photoResponseList;
+    @SerializedName("hits") private List<PhotoResponse> photoResponseList;
 
     public List<PhotoResponse> getList() {
         return photoResponseList;

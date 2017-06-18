@@ -1,17 +1,14 @@
 package me.ritesh.wallpapers.data.model.module;
 
-import org.parceler.Parcel;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import me.ritesh.wallpapers.data.model.objects.OnBoardingData;
+import org.parceler.Parcel;
 
 /**
  * @author Ritesh Shakya
  */
-@Parcel
-public class OnBoardingScreenModule {
+@Parcel public class OnBoardingScreenModule {
     List<OnBoardingData> pagerList = new ArrayList<>();
 
     public List<OnBoardingData> getPagerList() {
