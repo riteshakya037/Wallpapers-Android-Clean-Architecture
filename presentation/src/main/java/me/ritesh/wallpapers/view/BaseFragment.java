@@ -66,16 +66,6 @@ public abstract class BaseFragment<M> extends Fragment implements IView<M> {
         getPresenter().stop();
     }
 
-    @Override public void onPause() {
-        super.onPause();
-        getPresenter().pause();
-    }
-
-    @Override public void onResume() {
-        super.onResume();
-        getPresenter().resume();
-    }
-
     @Override public void onDestroy() {
         super.onDestroy();
         getPresenter().destroy();

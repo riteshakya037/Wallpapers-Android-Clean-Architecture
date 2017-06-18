@@ -1,11 +1,8 @@
 package me.ritesh.wallpapers.view.presenter;
 
-import me.ritesh.wallpapers.data.analytics.IAnalytics;
+import me.ritesh.wallpapers.domain.analytics.IAnalytics;
 
 public interface Presenter<T, M> {
-    void resume();
-
-    void pause();
 
     void destroy();
 

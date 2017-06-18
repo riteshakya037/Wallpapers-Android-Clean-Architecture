@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import io.reactivex.Observer;
 import javax.inject.Inject;
-import me.ritesh.wallpapers.data.analytics.IAnalytics;
-import me.ritesh.wallpapers.data.model.module.PhotosModule;
-import me.ritesh.wallpapers.data.model.objects.PhotoModel;
+import me.ritesh.wallpapers.domain.analytics.IAnalytics;
+import me.ritesh.wallpapers.model.module.PhotosModule;
+import me.ritesh.wallpapers.data.model.PhotoModel;
 import me.ritesh.wallpapers.data.net.response.objects.PhotosListResponse;
 import me.ritesh.wallpapers.domain.interactor.CommentsInteractor;
 import me.ritesh.wallpapers.domain.interactor.ImagePageInteractor;
@@ -22,7 +22,7 @@ import org.parceler.Parcels;
 
 public class PhotosPresenter
         extends PaginatedBasePresenter<IView, PhotosModule, PhotosListResponse> {
-    private CommentsInteractor commentsInteractor;
+    private final CommentsInteractor commentsInteractor;
 
     @Inject protected PhotosPresenter(@NonNull ImagePageInteractor interactor,
             @NonNull PhotosDataMapper modelDataMapper, CommentsInteractor commentsInteractor,
@@ -38,14 +38,6 @@ public class PhotosPresenter
 
     @Override public void loadData(Object... params) {
         super.loadData(getModel() == null ? 1 : getModel().getPageNumber());
-    }
-
-    @Override public void resume() {
-
-    }
-
-    @Override public void pause() {
-
     }
 
     @Override public void onNewPageRequest(int lastItemIndex) {

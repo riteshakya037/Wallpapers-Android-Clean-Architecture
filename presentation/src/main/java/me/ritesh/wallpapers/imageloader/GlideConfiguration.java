@@ -1,4 +1,4 @@
-package me.ritesh.wallpapers.config;
+package me.ritesh.wallpapers.imageloader;
 
 import android.content.Context;
 import com.bumptech.glide.Glide;

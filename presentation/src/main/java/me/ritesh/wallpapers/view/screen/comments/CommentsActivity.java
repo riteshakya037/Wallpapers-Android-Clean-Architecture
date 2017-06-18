@@ -1,5 +1,6 @@
 package me.ritesh.wallpapers.view.screen.comments;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -18,10 +19,10 @@ import javax.inject.Inject;
 import me.ritesh.wallpapers.MainApplication;
 import me.ritesh.wallpapers.R;
 import me.ritesh.wallpapers.adaptors.CommentsAdapter;
-import me.ritesh.wallpapers.data.model.module.CommentsModule;
-import me.ritesh.wallpapers.data.model.objects.CommentsModel;
-import me.ritesh.wallpapers.data.model.objects.PhotoModel;
+import me.ritesh.wallpapers.data.model.CommentsModel;
+import me.ritesh.wallpapers.data.model.PhotoModel;
 import me.ritesh.wallpapers.imageloader.IImageLoader;
+import me.ritesh.wallpapers.model.module.CommentsModule;
 import me.ritesh.wallpapers.view.BaseActivity;
 import me.ritesh.wallpapers.view.presenter.Presenter;
 import org.parceler.Parcels;
@@ -106,7 +107,7 @@ public class CommentsActivity extends BaseActivity<CommentsModule>
 
     @Override public void showDialogBox() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        View viewInflated =
+        @SuppressLint("InflateParams") View viewInflated =
                 LayoutInflater.from(this).inflate(R.layout.dialog_user_name, null, false);
         // Set up the input
         final EditText input = viewInflated.findViewById(R.id.dialog_user_name_input);

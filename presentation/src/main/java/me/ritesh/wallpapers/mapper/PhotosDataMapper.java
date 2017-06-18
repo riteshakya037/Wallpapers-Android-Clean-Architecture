@@ -1,10 +1,10 @@
 package me.ritesh.wallpapers.mapper;
 
 import javax.inject.Inject;
-import me.ritesh.wallpapers.data.model.module.PhotosModule;
-import me.ritesh.wallpapers.data.model.objects.PhotoModel;
 import me.ritesh.wallpapers.data.net.response.objects.PhotoResponse;
 import me.ritesh.wallpapers.data.net.response.objects.PhotosListResponse;
+import me.ritesh.wallpapers.model.module.PhotosModule;
+import me.ritesh.wallpapers.data.model.PhotoModel;
 
 /**
  * @author Ritesh Shakya

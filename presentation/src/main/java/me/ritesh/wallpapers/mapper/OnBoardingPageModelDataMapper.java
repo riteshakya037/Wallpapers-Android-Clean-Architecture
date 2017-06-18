@@ -2,8 +2,8 @@ package me.ritesh.wallpapers.mapper;
 
 import dagger.internal.Preconditions;
 import javax.inject.Inject;
-import me.ritesh.wallpapers.data.model.module.OnBoardingPageModule;
-import me.ritesh.wallpapers.data.model.objects.OnBoardingData;
+import me.ritesh.wallpapers.model.module.OnBoardingPageModule;
+import me.ritesh.wallpapers.data.model.OnBoardingData;
 
 /**
  * @author Ritesh Shakya

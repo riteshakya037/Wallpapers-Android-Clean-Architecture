@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 import dagger.internal.Preconditions;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import me.ritesh.wallpapers.data.analytics.IAnalytics;
+import me.ritesh.wallpapers.domain.analytics.IAnalytics;
 import me.ritesh.wallpapers.domain.interactor.BaseInteractor;
 import me.ritesh.wallpapers.mapper.IModelDataMapper;
 import me.ritesh.wallpapers.view.IView;
@@ -75,10 +75,6 @@ public abstract class BasePresenter<T extends IView, M, K> implements Presenter<
     @Override public void destroy() {
         interactor.unsubscribe();
         view = null;
-    }
-
-    public BaseInteractor getInteractor() {
-        return interactor;
     }
 
     @Override public IAnalytics getAnalytics() {

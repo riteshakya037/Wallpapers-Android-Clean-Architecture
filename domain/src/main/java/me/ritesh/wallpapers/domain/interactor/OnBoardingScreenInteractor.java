@@ -4,9 +4,9 @@ import android.support.annotation.NonNull;
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.inject.Inject;
-import me.ritesh.wallpapers.data.model.objects.OnBoardingData;
 
 /**
  * @author Ritesh Shakya
@@ -20,10 +20,8 @@ public class OnBoardingScreenInteractor extends BaseInteractor {
     }
 
     @Override public Observable buildUseCaseObservable(Object... params) {
-        List<OnBoardingData> entities = new ArrayList<>(params.length);
-        for (Object o : params) {
-            if (o instanceof OnBoardingData) entities.add((OnBoardingData) o);
-        }
+        List<Object> entities = new ArrayList<>(params.length);
+        Collections.addAll(entities, params);
         return Observable.just(entities);
     }
 }

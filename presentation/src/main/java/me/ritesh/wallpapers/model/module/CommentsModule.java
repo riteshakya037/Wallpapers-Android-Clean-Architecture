@@ -1,8 +1,8 @@
-package me.ritesh.wallpapers.data.model.module;
+package me.ritesh.wallpapers.model.module;
 
 import java.util.ArrayList;
 import java.util.List;
-import me.ritesh.wallpapers.data.model.objects.CommentsModel;
+import me.ritesh.wallpapers.data.model.CommentsModel;
 import org.parceler.Parcel;
 
 /**
@@ -10,7 +10,7 @@ import org.parceler.Parcel;
  */
 @Parcel public class CommentsModule {
     List<CommentsModel> commentsList = new ArrayList<>();
-    int photoId;
+     int photoId;
     String imageUrl;
 
     public int getPhotoId() {

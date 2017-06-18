@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import javax.inject.Inject;
 import me.ritesh.wallpapers.MainApplication;
-import me.ritesh.wallpapers.data.remoteconfig.IRemoteConfig;
+import me.ritesh.wallpapers.domain.remoteconfig.IRemoteConfig;
 import me.ritesh.wallpapers.view.screen.onboarding.OnBoardingActivity;
 
 public class SplashActivity extends AppCompatActivity {

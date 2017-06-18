@@ -22,9 +22,9 @@ import javax.inject.Inject;
 import me.ritesh.wallpapers.MainApplication;
 import me.ritesh.wallpapers.R;
 import me.ritesh.wallpapers.adaptors.OnBoardingAdaptor;
-import me.ritesh.wallpapers.data.model.module.OnBoardingScreenModule;
-import me.ritesh.wallpapers.data.model.objects.OnBoardingData;
-import me.ritesh.wallpapers.data.remoteconfig.IRemoteConfig;
+import me.ritesh.wallpapers.data.model.OnBoardingData;
+import me.ritesh.wallpapers.domain.remoteconfig.IRemoteConfig;
+import me.ritesh.wallpapers.model.module.OnBoardingScreenModule;
 import me.ritesh.wallpapers.view.BaseActivity;
 import me.ritesh.wallpapers.view.presenter.Presenter;
 import me.ritesh.wallpapers.view.screen.photo_listing.PhotosActivity;
@@ -81,10 +81,10 @@ public class OnBoardingActivity extends BaseActivity<OnBoardingScreenModule> {
         switch (remoteConfig.getExperimentVariant(IRemoteConfig.EXPERIMENT_ABOUT_MENU)) {
             case VARIANT_A:
                 about.setIcon(R.drawable.ic_info_sign);
-                about.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+                about.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
                 break;
             case VARIANT_B:
-                about.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+                about.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
                 break;
             default:
                 about.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);

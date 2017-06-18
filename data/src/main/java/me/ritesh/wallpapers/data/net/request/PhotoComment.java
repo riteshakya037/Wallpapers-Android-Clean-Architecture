@@ -7,11 +7,11 @@ import org.parceler.Parcel;
  * @author Ritesh Shakya
  */
 
-@Parcel public class PhotoComment {
+@Parcel class PhotoComment {
     private Date date;
     private String comment;
 
-    public PhotoComment() {
+    PhotoComment() {
         //        Required by Parcel
     }
 

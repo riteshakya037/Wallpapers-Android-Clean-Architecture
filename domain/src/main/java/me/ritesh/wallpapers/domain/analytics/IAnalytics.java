@@ -1,6 +1,6 @@
-package me.ritesh.wallpapers.data.analytics;
+package me.ritesh.wallpapers.domain.analytics;
 
-import me.ritesh.wallpapers.data.remoteconfig.IRemoteConfig;
+import me.ritesh.wallpapers.domain.remoteconfig.IRemoteConfig;
 
 /**
  * @author Ritesh Shakya

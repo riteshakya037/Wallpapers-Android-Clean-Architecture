@@ -1,4 +1,4 @@
-package me.ritesh.wallpapers.data.model.objects;
+package me.ritesh.wallpapers.data.model;
 
 import org.parceler.Parcel;
 

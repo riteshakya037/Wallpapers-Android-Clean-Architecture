@@ -1,4 +1,4 @@
-package me.ritesh.wallpapers.data.repository;
+package me.ritesh.wallpapers.domain.repository;
 
 import io.reactivex.Observable;
 

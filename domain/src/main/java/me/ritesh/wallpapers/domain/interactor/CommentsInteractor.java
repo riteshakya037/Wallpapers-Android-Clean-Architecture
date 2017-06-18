@@ -4,8 +4,7 @@ import android.support.annotation.NonNull;
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
 import javax.inject.Inject;
-import me.ritesh.wallpapers.data.model.objects.CommentsModel;
-import me.ritesh.wallpapers.data.repository.IComments;
+import me.ritesh.wallpapers.domain.repository.IComments;
 
 /**
  * @author Ritesh Shakya
@@ -13,7 +12,7 @@ import me.ritesh.wallpapers.data.repository.IComments;
 
 public class CommentsInteractor extends BaseInteractor {
 
-    private IComments comments;
+    private final IComments comments;
 
     @Inject
     public CommentsInteractor(@NonNull IComments comments, @NonNull Scheduler observerScheduler,
@@ -26,7 +25,7 @@ public class CommentsInteractor extends BaseInteractor {
         return comments.getComments((String) params[0]);
     }
 
-    public Observable sendComment(String photoId, CommentsModel message) {
+    public Observable sendComment(String photoId, Object message) {
         return comments.sendComment(photoId, message);
     }
 }

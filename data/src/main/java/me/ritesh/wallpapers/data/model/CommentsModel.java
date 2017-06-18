@@ -1,4 +1,4 @@
-package me.ritesh.wallpapers.data.model.objects;
+package me.ritesh.wallpapers.data.model;
 
 import java.util.Date;
 import org.parceler.Parcel;
@@ -8,9 +8,9 @@ import org.parceler.Parcel;
  */
 
 @Parcel public class CommentsModel {
-    Date date;
-    String comment;
-    String user;
+    private Date date;
+    private String comment;
+    private String user;
 
     public CommentsModel() {
     }

@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import me.ritesh.wallpapers.R;
-import me.ritesh.wallpapers.data.model.objects.CommentsModel;
+import me.ritesh.wallpapers.data.model.CommentsModel;
 import me.ritesh.wallpapers.view.screen.comments.CommentPresenter;
 
 /**
@@ -19,7 +19,7 @@ import me.ritesh.wallpapers.view.screen.comments.CommentPresenter;
  */
 
 public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.MyViewHolder> {
-    private CommentPresenter commentPresenter;
+    private final CommentPresenter commentPresenter;
 
     public CommentsAdapter(CommentPresenter commentPresenter) {
         this.commentPresenter = commentPresenter;

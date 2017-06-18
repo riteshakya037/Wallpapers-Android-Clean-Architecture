@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.Map;
 import javax.inject.Inject;
 import me.ritesh.wallpapers.MainApplication;
-import me.ritesh.wallpapers.data.analytics.IAnalytics;
-import me.ritesh.wallpapers.data.model.module.CommentsModule;
-import me.ritesh.wallpapers.data.model.objects.CommentsModel;
+import me.ritesh.wallpapers.domain.analytics.IAnalytics;
+import me.ritesh.wallpapers.model.module.CommentsModule;
+import me.ritesh.wallpapers.data.model.CommentsModel;
 import me.ritesh.wallpapers.domain.interactor.CommentsInteractor;
 import me.ritesh.wallpapers.view.presenter.Presenter;
 
@@ -27,9 +27,9 @@ import me.ritesh.wallpapers.view.presenter.Presenter;
 public class CommentPresenter implements Presenter<CommentsActivityView, CommentsModule> {
 
     private static final String KEY_USERNAME = "username";
-    private MainApplication application;
-    private CommentsInteractor interactor;
-    private IAnalytics analytics;
+    private final MainApplication application;
+    private final CommentsInteractor interactor;
+    private final IAnalytics analytics;
     private CommentsModule model;
     private CommentsActivityView view;
 
@@ -39,14 +39,6 @@ public class CommentPresenter implements Presenter<CommentsActivityView, Comment
         this.interactor = interactor;
         this.analytics = analytics;
         analytics.LogEventScreen("Comments");
-    }
-
-    @Override public void resume() {
-
-    }
-
-    @Override public void pause() {
-
     }
 
     @Override public void destroy() {

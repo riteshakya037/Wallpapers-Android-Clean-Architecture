@@ -10,6 +10,7 @@ import javax.inject.Singleton;
 import me.ritesh.wallpapers.BuildConfig;
 import me.ritesh.wallpapers.MainApplication;
 import me.ritesh.wallpapers.data.net.PixabayApi;
+import me.ritesh.wallpapers.data.net.TokenInterceptor;
 import okhttp3.Cache;
 import okhttp3.CipherSuite;
 import okhttp3.ConnectionSpec;
@@ -44,6 +45,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
                 .connectTimeout(10, TimeUnit.SECONDS)
                 .writeTimeout(10, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS)
+                .addInterceptor(new TokenInterceptor())
                 .addInterceptor(logging)
                 .cache(cache)
                 .build();
@@ -52,7 +54,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
     @Singleton @Provides PixabayApi providePixabayApi(OkHttpClient client, Gson gson) {
         Retrofit retrofit =
                 new Retrofit.Builder().addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                        .addConverterFactory(GsonConverterFactory.create())
+                        .addConverterFactory(GsonConverterFactory.create(gson))
                         .client(client)
                         .baseUrl(BASE_URL)
                         .build();

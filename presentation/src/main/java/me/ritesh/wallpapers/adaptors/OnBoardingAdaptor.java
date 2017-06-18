@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import java.util.List;
-import me.ritesh.wallpapers.data.model.objects.OnBoardingData;
+import me.ritesh.wallpapers.data.model.OnBoardingData;
 import me.ritesh.wallpapers.view.screen.onboarding.OnBoardingPagerFragment;
 
 /**

@@ -3,8 +3,8 @@ package me.ritesh.wallpapers.mapper;
 import dagger.internal.Preconditions;
 import java.util.List;
 import javax.inject.Inject;
-import me.ritesh.wallpapers.data.model.module.OnBoardingScreenModule;
-import me.ritesh.wallpapers.data.model.objects.OnBoardingData;
+import me.ritesh.wallpapers.model.module.OnBoardingScreenModule;
+import me.ritesh.wallpapers.data.model.OnBoardingData;
 
 /**
  * @author Ritesh Shakya

@@ -1,6 +1,6 @@
-package me.ritesh.wallpapers.data.model.module;
+package me.ritesh.wallpapers.model.module;
 
-import me.ritesh.wallpapers.data.model.objects.OnBoardingData;
+import me.ritesh.wallpapers.data.model.OnBoardingData;
 import org.parceler.Parcel;
 
 /**

@@ -1,15 +1,15 @@
-package me.ritesh.wallpapers.data.model.module;
+package me.ritesh.wallpapers.model.module;
 
 import java.util.ArrayList;
 import java.util.List;
-import me.ritesh.wallpapers.data.model.objects.PhotoModel;
+import me.ritesh.wallpapers.data.model.PhotoModel;
 import org.parceler.Parcel;
 
 /**
  * @author Ritesh Shakya
  */
 @Parcel public class PhotosModule {
-    List<PhotoModel> photoModels = new ArrayList<>();
+    final List<PhotoModel> photoModels = new ArrayList<>();
 
     private int pageNumber = 1;
     private int lastItemIndex = 0;

@@ -13,8 +13,8 @@ import javax.inject.Inject;
 import me.ritesh.wallpapers.MainApplication;
 import me.ritesh.wallpapers.R;
 import me.ritesh.wallpapers.adaptors.PhotosAdapter;
-import me.ritesh.wallpapers.data.model.module.PhotosModule;
 import me.ritesh.wallpapers.imageloader.IImageLoader;
+import me.ritesh.wallpapers.model.module.PhotosModule;
 import me.ritesh.wallpapers.view.BaseActivity;
 import me.ritesh.wallpapers.view.presenter.Presenter;
 
@@ -27,9 +27,9 @@ public class PhotosActivity extends BaseActivity<PhotosModule> {
     @BindView(R.id.coordinator_layout) CoordinatorLayout coordinatorLayout;
     @BindView(R.id.progress_bar) ProgressBar progressBar;
 
-    PhotosAdapter photosAdapter;
+    private PhotosAdapter photosAdapter;
 
-    boolean isFirstTimeCalled = true;
+    private boolean isFirstTimeCalled = true;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

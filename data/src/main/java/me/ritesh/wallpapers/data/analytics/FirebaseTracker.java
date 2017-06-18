@@ -3,7 +3,8 @@ package me.ritesh.wallpapers.data.analytics;
 import android.os.Bundle;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.crash.FirebaseCrash;
-import me.ritesh.wallpapers.data.remoteconfig.IRemoteConfig;
+import me.ritesh.wallpapers.domain.analytics.IAnalytics;
+import me.ritesh.wallpapers.domain.remoteconfig.IRemoteConfig;
 
 /**
  * @author Ritesh Shakya

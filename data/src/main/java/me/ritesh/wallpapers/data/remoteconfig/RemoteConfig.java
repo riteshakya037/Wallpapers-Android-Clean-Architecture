@@ -7,7 +7,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 import me.ritesh.wallpapers.data.R;
-import me.ritesh.wallpapers.data.analytics.IAnalytics;
+import me.ritesh.wallpapers.domain.analytics.IAnalytics;
+import me.ritesh.wallpapers.domain.remoteconfig.IRemoteConfig;
 
 /**
  * @author Ritesh Shakya
@@ -15,7 +16,7 @@ import me.ritesh.wallpapers.data.analytics.IAnalytics;
 
 public class RemoteConfig implements IRemoteConfig {
     private static final String TAG = "RemoteConfig";
-    private FirebaseRemoteConfig firebaseRemoteConfig;
+    private final FirebaseRemoteConfig firebaseRemoteConfig;
 
     public RemoteConfig(boolean isDebug, final IAnalytics analytics) {
         firebaseRemoteConfig = FirebaseRemoteConfig.getInstance();

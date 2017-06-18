@@ -14,14 +14,15 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.functions.Cancellable;
-import me.ritesh.wallpapers.data.model.objects.CommentsModel;
+import me.ritesh.wallpapers.domain.repository.IComments;
+import me.ritesh.wallpapers.domain.storage.DatabaseNames;
 
 /**
  * @author Ritesh Shakya
  */
 
 public class Comments implements IComments {
-    private DatabaseReference databaseReference;
+    private final DatabaseReference databaseReference;
 
     public Comments(@NonNull DatabaseReference databaseReference) {
         this.databaseReference = databaseReference;
@@ -35,7 +36,7 @@ public class Comments implements IComments {
         return observe(query);
     }
 
-    @Override public Observable sendComment(final String photoId, final CommentsModel message) {
+    @Override public Observable sendComment(final String photoId, final Object message) {
         return Observable.create(new ObservableOnSubscribe<Boolean>() {
             @Override public void subscribe(
                     @io.reactivex.annotations.NonNull final ObservableEmitter<Boolean> emitter)

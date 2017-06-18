@@ -26,5 +26,4 @@ dependencies {
     compile "com.google.dagger:dagger:$rootProject.ext.dagger"
     apt "com.google.dagger:dagger-compiler:$rootProject.ext.dagger"
 
-    compile project(path: ':data')
 }

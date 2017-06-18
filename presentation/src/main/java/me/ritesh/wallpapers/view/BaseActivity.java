@@ -69,16 +69,6 @@ public abstract class BaseActivity<M> extends AppCompatActivity implements IView
         getPresenter().stop();
     }
 
-    @Override protected void onPause() {
-        super.onPause();
-        getPresenter().pause();
-    }
-
-    @Override protected void onResume() {
-        super.onResume();
-        getPresenter().resume();
-    }
-
     @Override protected void onDestroy() {
         super.onDestroy();
         getPresenter().destroy();

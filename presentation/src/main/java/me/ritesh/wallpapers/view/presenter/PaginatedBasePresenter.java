@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import me.ritesh.wallpapers.data.analytics.IAnalytics;
+import me.ritesh.wallpapers.domain.analytics.IAnalytics;
 import me.ritesh.wallpapers.domain.interactor.BaseInteractor;
 import me.ritesh.wallpapers.mapper.IModelDataMapper;
 import me.ritesh.wallpapers.utils.PageController;
@@ -18,15 +18,13 @@ public abstract class PaginatedBasePresenter<T extends IView, M, K> extends Base
         implements PageController.OnNewPageRequest {
     @NonNull private final BaseInteractor interactor;
     @NonNull private final IModelDataMapper<K, M> modelDataMapper;
-    private final IAnalytics analytics;
-    PageController pageController;
+    private PageController pageController;
 
     protected PaginatedBasePresenter(@NonNull BaseInteractor interactor,
             @NonNull IModelDataMapper<K, M> modelDataMapper, IAnalytics analytics) {
         super(interactor, modelDataMapper, analytics);
         this.interactor = interactor;
         this.modelDataMapper = modelDataMapper;
-        this.analytics = analytics;
     }
 
     public PageController getPageController() {
@@ -76,14 +74,6 @@ public abstract class PaginatedBasePresenter<T extends IView, M, K> extends Base
     }
 
     protected abstract void pagingAddNewData(M newModel);
-
-    @Override public void resume() {
-
-    }
-
-    @Override public void pause() {
-
-    }
 
     @Override public void onNewPageRequest(int lastItemIndex) {
 

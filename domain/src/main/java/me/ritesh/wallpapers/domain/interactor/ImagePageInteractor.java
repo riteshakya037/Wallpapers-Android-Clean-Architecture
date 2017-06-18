@@ -5,7 +5,7 @@ import dagger.internal.Preconditions;
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
 import javax.inject.Inject;
-import me.ritesh.wallpapers.data.repository.IPhotos;
+import me.ritesh.wallpapers.domain.repository.IPhotos;
 
 /**
  * @author Ritesh Shakya

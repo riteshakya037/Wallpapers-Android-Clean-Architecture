@@ -12,15 +12,14 @@ import javax.inject.Singleton;
 import me.ritesh.wallpapers.BuildConfig;
 import me.ritesh.wallpapers.MainApplication;
 import me.ritesh.wallpapers.data.analytics.FirebaseTracker;
-import me.ritesh.wallpapers.data.analytics.IAnalytics;
-import me.ritesh.wallpapers.data.model.objects.CommentsModel;
 import me.ritesh.wallpapers.data.net.PixabayApi;
-import me.ritesh.wallpapers.data.remoteconfig.IRemoteConfig;
 import me.ritesh.wallpapers.data.remoteconfig.RemoteConfig;
 import me.ritesh.wallpapers.data.repository.Comments;
-import me.ritesh.wallpapers.data.repository.IComments;
-import me.ritesh.wallpapers.data.repository.IPhotos;
 import me.ritesh.wallpapers.data.repository.Photos;
+import me.ritesh.wallpapers.domain.analytics.IAnalytics;
+import me.ritesh.wallpapers.domain.remoteconfig.IRemoteConfig;
+import me.ritesh.wallpapers.domain.repository.IComments;
+import me.ritesh.wallpapers.domain.repository.IPhotos;
 
 /**
  * @author Ritesh Shakya
@@ -93,7 +92,7 @@ import me.ritesh.wallpapers.data.repository.Photos;
                     return Observable.error(new RuntimeException("FireBase not supported"));
                 }
 
-                @Override public Observable sendComment(String photoId, CommentsModel message) {
+                @Override public Observable sendComment(String photoId, Object message) {
                     return Observable.error(new RuntimeException("FireBase not supported"));
                 }
             };

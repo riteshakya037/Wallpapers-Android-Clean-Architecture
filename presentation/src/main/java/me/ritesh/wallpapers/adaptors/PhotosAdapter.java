@@ -15,7 +15,7 @@ import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import me.ritesh.wallpapers.R;
-import me.ritesh.wallpapers.data.model.objects.PhotoModel;
+import me.ritesh.wallpapers.data.model.PhotoModel;
 import me.ritesh.wallpapers.imageloader.IImageLoader;
 import me.ritesh.wallpapers.view.screen.photo_listing.PhotosPresenter;
 

@@ -25,4 +25,7 @@
     <string name="dialog_about_text">Example project on how to design Android application with clean architecture, MVP, RXJava and Dagger.
      \nYou can find the source code in GitHub
     \nhttps://github.com/riteshakya037/Wallpapers-Android-Clean-Architecture</string>
+    <string name="selected_photo">Selected Photo</string>
+    <string name="onboarding_images">OnBoarding Images</string>
+    <string name="individual_photos">Individual Photos</string>
 </resources>
