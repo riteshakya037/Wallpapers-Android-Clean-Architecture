@@ -5,10 +5,15 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import java.util.ArrayList;
@@ -111,6 +116,33 @@ public class OnBoardingActivity extends BaseActivity<OnBoardingScreenModule> {
     @Override public void onComplete(OnBoardingScreenModule model) {
         if (model != null) {
             mAdapter.setData(model.getPagerList());
+        }
+    }
+
+    @Override public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_about:
+                getPresenter().getAnalytics().LogEventClick("About");
+                showDialogAbout();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void showDialogAbout() {
+        final SpannableString m = new SpannableString(getString(R.string.dialog_about_text));
+        Linkify.addLinks(m, Linkify.WEB_URLS);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.title_about);
+        builder.setMessage(m);
+        builder.setPositiveButton(R.string.dialog_ok, null);
+        AlertDialog alertDialog = builder.show();
+
+        TextView textView = ((TextView) alertDialog.findViewById(android.R.id.message));
+        if (textView != null) {
+            textView.setMovementMethod(LinkMovementMethod.getInstance());
         }
     }
 }

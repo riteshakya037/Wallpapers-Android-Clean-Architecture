@@ -19,4 +19,10 @@
         <item quantity="one">%1$d hour ago</item>
         <item quantity="other">%1$d hours ago</item>
     </plurals>
+
+    <string name="title_about">About</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_about_text">Example project on how to design Android application with clean architecture, MVP, RXJava and Dagger.
+     \nYou can find the source code in GitHub
+    \nhttps://github.com/riteshakya037/Wallpapers-Android-Clean-Architecture</string>
 </resources>
