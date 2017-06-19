@@ -17,10 +17,19 @@ More general info about Clean Architecture can be found on this [blog]. This is 
 
 ## Connecting all together
 
-Basic flaw of most applications is fetching data from the server and presenting to the user, lets see how it will work.
+Basic flow of most applications is fetching data from the server and presenting to the user, lets see how it will work.
 
 User open the view, presenter will call the repository for getting data, repository can return cached data by the policy that will be defined and/or make network call, after the data is ready it will be transferred to model and passed to the presenter, presenter will update the view and user will see the updated data.
 It sound complex but you get a lot of benefits from this, it is more testable code and flexible.
+
+The image below shows how the architecture itself is layered. The architecture is structured as an onion because each layer depends on the layer below itself. Domain layer contains his core business logic and rules. This includes interfaces on how Data is accessed from a Repository. If there were other Services to external apis, these interfaces would be here as well. The Presentation and Data Layer sit on top of this as seen in the onion, so this is why the Data layer depends on the Domain layer.
+
+<img src="screenshots/layer-separation.png?raw=true" width="600" height="434">
+
+So our Domain contains the interfaces to the data, on how we store and access data. These are the business rules. But the actual implementation is not important to our business. This we create the actual backbone for the application without specifying how things are done, thus enabling us to swap the outer layers with ease.
+
+For example, a change is required in which we swap out the Comment Loaded from firebase with an in house server, whithout having to change the core implementation we can just swap out this component. Basically we are changing how the app interprets a UseCase without actually changing what it does.
+
 
 ## Built using Libraries
 
