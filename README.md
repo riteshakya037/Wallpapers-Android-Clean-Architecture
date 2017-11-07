@@ -1,3 +1,8 @@
+[![API](https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=16)
+[![codebeat badge](https://codebeat.co/badges/e5382dff-b03b-45f0-ba80-c2ce9ebb30f5)](https://codebeat.co/projects/github-com-riteshakya037-wallpapers-android-clean-architecture-master)
+
+
+
 # Wallpapers (Clean Architecture)
 Example project on how to design Android application with clean architecture, MVP, RXJava and Dagger.
 
