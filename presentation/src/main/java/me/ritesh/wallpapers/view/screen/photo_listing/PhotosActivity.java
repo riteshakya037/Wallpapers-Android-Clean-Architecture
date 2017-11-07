@@ -65,7 +65,7 @@ public class PhotosActivity extends BaseActivity<PhotosModule> {
         return R.layout.activity_photos;
     }
 
-    @Override protected Presenter getPresenter() {
+    @SuppressWarnings("unchecked") @Override protected Presenter getPresenter() {
         return photosPresenter;
     }
 

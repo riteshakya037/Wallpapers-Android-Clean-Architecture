@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -24,7 +23,7 @@ dependencies {
     compile "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxjava"
     compile "com.android.support:support-annotations:$rootProject.ext.androidSupport"
     compile "com.google.dagger:dagger:$rootProject.ext.dagger"
-    apt "com.google.dagger:dagger-compiler:$rootProject.ext.dagger"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.dagger"
 
     compile project(path: ':data')
 }

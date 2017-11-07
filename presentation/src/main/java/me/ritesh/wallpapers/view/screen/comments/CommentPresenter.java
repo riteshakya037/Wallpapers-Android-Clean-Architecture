@@ -24,14 +24,14 @@ import me.ritesh.wallpapers.view.presenter.Presenter;
  * @author Ritesh Shakya
  */
 
-public class CommentPresenter implements Presenter<CommentsActivityView, CommentsModule> {
+public class CommentPresenter implements Presenter<CommentsActivityView<CommentsModule>, CommentsModule> {
 
     private static final String KEY_USERNAME = "username";
     private MainApplication application;
     private CommentsInteractor interactor;
     private IAnalytics analytics;
     private CommentsModule model;
-    private CommentsActivityView view;
+    private CommentsActivityView<CommentsModule> view;
 
     @Inject CommentPresenter(@NonNull MainApplication application,
             @NonNull CommentsInteractor interactor, IAnalytics analytics) {
@@ -88,11 +88,7 @@ public class CommentPresenter implements Presenter<CommentsActivityView, Comment
                 if (stringList != null && stringList.size() > 0) {
                     List<CommentsModel> comments = new ArrayList<>(stringList.values());
 
-                    Collections.sort(comments, new Comparator<CommentsModel>() {
-                        @Override public int compare(CommentsModel t1, CommentsModel t2) {
-                            return t1.getDate().compareTo(t2.getDate());
-                        }
-                    });
+                    Collections.sort(comments, (t1, t2) -> t1.getDate().compareTo(t2.getDate()));
 
                     model.setComments(comments);
                 }
@@ -104,11 +100,11 @@ public class CommentPresenter implements Presenter<CommentsActivityView, Comment
         }, params[0]);
     }
 
-    @Override public CommentsActivityView getView() {
+    @Override public CommentsActivityView<CommentsModule> getView() {
         return view;
     }
 
-    @Override public void setView(@NonNull CommentsActivityView view) {
+    @Override public void setView(@NonNull CommentsActivityView<CommentsModule> view) {
         this.view = view;
     }
 

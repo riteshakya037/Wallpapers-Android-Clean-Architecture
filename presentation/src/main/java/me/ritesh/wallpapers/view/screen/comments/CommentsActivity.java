@@ -1,6 +1,6 @@
 package me.ritesh.wallpapers.view.screen.comments;
 
-import android.content.DialogInterface;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -37,7 +37,6 @@ public class CommentsActivity extends BaseActivity<CommentsModule>
     @BindView(R.id.activity_comments_image) ImageView ivPhoto;
 
     CommentsAdapter commentsAdapter;
-    private String imageUrl;
 
     @OnClick(R.id.activity_comments_send_button) public void onMessageSend() {
         String message = messageInput.getText().toString();
@@ -81,7 +80,7 @@ public class CommentsActivity extends BaseActivity<CommentsModule>
         return R.layout.activity_comments;
     }
 
-    @Override protected Presenter getPresenter() {
+    @SuppressWarnings("unchecked") @Override protected Presenter getPresenter() {
         return commentPresenter;
     }
 
@@ -106,21 +105,14 @@ public class CommentsActivity extends BaseActivity<CommentsModule>
 
     @Override public void showDialogBox() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        View viewInflated =
+        @SuppressLint("InflateParams") View viewInflated =
                 LayoutInflater.from(this).inflate(R.layout.dialog_user_name, null, false);
         // Set up the input
         final EditText input = viewInflated.findViewById(R.id.dialog_user_name_input);
         builder.setView(viewInflated);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override public void onClick(DialogInterface dialog, int which) {
-                commentPresenter.saveUserName(input.getText().toString());
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+        builder.setPositiveButton("OK",
+                (dialog, which) -> commentPresenter.saveUserName(input.getText().toString()));
+        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
 
         builder.show();
     }

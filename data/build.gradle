@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -34,5 +33,5 @@ dependencies {
     compile "org.parceler:parceler-api:$rootProject.ext.parceler"
     compile "io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxandroid"
     compile "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxjava"
-    apt "org.parceler:parceler:$rootProject.ext.parceler"
+    annotationProcessor "org.parceler:parceler:$rootProject.ext.parceler"
 }

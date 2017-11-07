@@ -70,12 +70,7 @@ import me.ritesh.wallpapers.data.repository.Photos;
         if (playServicesStatus == ConnectionResult.SUCCESS) {
             return new RemoteConfig(BuildConfig.DEBUG, analytics);
         } else {
-            return new IRemoteConfig() {
-
-                @Override public ExperimentVariant getExperimentVariant(String key) {
-                    return ExperimentVariant.NONE;
-                }
-            };
+            return key -> IRemoteConfig.ExperimentVariant.NONE;
         }
     }
 

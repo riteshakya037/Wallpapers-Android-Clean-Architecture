@@ -13,7 +13,7 @@ import me.ritesh.wallpapers.view.IView;
  * @author Ritesh Shakya
  */
 
-public abstract class BasePresenter<T extends IView, M, K> implements Presenter<T, M> {
+public abstract class BasePresenter<T extends IView<M>, M, K> implements Presenter<T, M> {
     private final BaseInteractor interactor;
     private final IModelDataMapper<K, M> modelDataMapper;
     private final IAnalytics analytics;

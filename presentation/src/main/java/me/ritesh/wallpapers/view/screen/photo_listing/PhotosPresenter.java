@@ -21,7 +21,7 @@ import org.parceler.Parcels;
  */
 
 public class PhotosPresenter
-        extends PaginatedBasePresenter<IView, PhotosModule, PhotosListResponse> {
+        extends PaginatedBasePresenter<IView<PhotosModule>, PhotosModule, PhotosListResponse> {
     private CommentsInteractor commentsInteractor;
 
     @Inject protected PhotosPresenter(@NonNull ImagePageInteractor interactor,

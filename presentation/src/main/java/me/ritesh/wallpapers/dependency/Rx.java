@@ -11,8 +11,8 @@ import javax.inject.Singleton;
 @Module public class Rx {
     static final String MAIN = "main";
     static final String IO = "io";
-    static final String COMPUTATION = "computation";
-    static final String TRAMPOLINE = "trampoline";
+    private static final String COMPUTATION = "computation";
+    private static final String TRAMPOLINE = "trampoline";
 
     @Provides @Singleton @Named(Rx.MAIN) Scheduler provideMainScheduler() {
         return AndroidSchedulers.mainThread();

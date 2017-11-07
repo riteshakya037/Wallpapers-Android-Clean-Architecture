@@ -21,7 +21,8 @@ public abstract class BaseInteractor implements Interactor {
         this.subscribeScheduler = Preconditions.checkNotNull(subscribeScheduler);
     }
 
-    @Override public void execute(@NonNull Observer useCaseSubscriber, Object... params) {
+    @SuppressWarnings("unchecked") @Override
+    public void execute(@NonNull Observer useCaseSubscriber, Object... params) {
         observable = this.buildUseCaseObservable(params)
                 .subscribeOn(subscribeScheduler)
                 .observeOn(observerScheduler);

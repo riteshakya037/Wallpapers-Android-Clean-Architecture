@@ -1,6 +1,7 @@
 package me.ritesh.wallpapers.view.screen.onboarding;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -40,7 +41,7 @@ public class OnBoardingPagerFragment extends BaseFragment<OnBoardingPageModule> 
     @Override public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (savedInstanceState == null && getArguments() != null) {
-            onBoardingFragmentPresenter.loadData(
+            onBoardingFragmentPresenter.loadData((OnBoardingData)
                     Parcels.unwrap(getArguments().getParcelable(ARG_DATA)));
         }
     }
@@ -51,6 +52,7 @@ public class OnBoardingPagerFragment extends BaseFragment<OnBoardingPageModule> 
             imageLoader.loadImage(boardingData.getImageId(), mImageView);
             mHeadlineText.setText(boardingData.getTitle());
             mSubtitleText.setText(boardingData.getSubtitle());
+            //noinspection ConstantConditions
             mHeadlineText.setTextColor(
                     ContextCompat.getColor(getContext(), boardingData.getTitleColor()));
         }
@@ -60,11 +62,11 @@ public class OnBoardingPagerFragment extends BaseFragment<OnBoardingPageModule> 
         return R.layout.fragment_on_boarding_page;
     }
 
-    @Override protected void injectFragment() {
+    @SuppressWarnings("ConstantConditions") @Override protected void injectFragment() {
         ((MainApplication) getActivity().getApplication()).getApplicationComponent().inject(this);
     }
 
-    @Override protected Presenter getPresenter() {
+    @SuppressWarnings("unchecked") @NonNull @Override protected Presenter getPresenter() {
         return onBoardingFragmentPresenter;
     }
 

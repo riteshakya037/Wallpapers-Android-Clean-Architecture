@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         package="me.ritesh.wallpapers">
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -12,7 +13,8 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            tools:ignore="GoogleAppIndexingWarning">
         <meta-data
                 android:name="me.ritesh.wallpapers.config.GlideConfiguration"
                 android:value="GlideModule"/>
@@ -30,7 +32,7 @@
                 android:name=".view.screen.onboarding.OnBoardingActivity"
                 android:label=""/>
         <activity android:name=".view.screen.photo_listing.PhotosActivity"/>
-        <activity android:name=".view.screen.comments.CommentsActivity"></activity>
+        <activity android:name=".view.screen.comments.CommentsActivity"/>
     </application>
 
 </manifest>

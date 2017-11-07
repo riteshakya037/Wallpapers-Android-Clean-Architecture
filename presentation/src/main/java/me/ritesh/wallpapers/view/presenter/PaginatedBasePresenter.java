@@ -14,19 +14,17 @@ import me.ritesh.wallpapers.view.IView;
  * @author Ritesh Shakya
  */
 
-public abstract class PaginatedBasePresenter<T extends IView, M, K> extends BasePresenter<T, M, K>
+public abstract class PaginatedBasePresenter<T extends IView<M>, M, K> extends BasePresenter<T, M, K>
         implements PageController.OnNewPageRequest {
     @NonNull private final BaseInteractor interactor;
     @NonNull private final IModelDataMapper<K, M> modelDataMapper;
-    private final IAnalytics analytics;
-    PageController pageController;
+    private PageController pageController;
 
     protected PaginatedBasePresenter(@NonNull BaseInteractor interactor,
             @NonNull IModelDataMapper<K, M> modelDataMapper, IAnalytics analytics) {
         super(interactor, modelDataMapper, analytics);
         this.interactor = interactor;
         this.modelDataMapper = modelDataMapper;
-        this.analytics = analytics;
     }
 
     public PageController getPageController() {

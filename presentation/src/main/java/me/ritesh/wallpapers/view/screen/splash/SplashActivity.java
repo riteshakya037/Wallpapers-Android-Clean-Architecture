@@ -17,12 +17,10 @@ public class SplashActivity extends AppCompatActivity {
         ((MainApplication) getApplication()).getApplicationComponent().inject(this);
 
         //give the opportunity for remote config get data.
-        new Handler().postDelayed(new Runnable() {
-            @Override public void run() {
-                Intent intent = new Intent(SplashActivity.this, OnBoardingActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        new Handler().postDelayed(() -> {
+            Intent intent = new Intent(SplashActivity.this, OnBoardingActivity.class);
+            startActivity(intent);
+            finish();
         }, 2000);
     }
 

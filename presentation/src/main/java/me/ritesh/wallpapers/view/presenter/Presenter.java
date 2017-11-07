@@ -1,8 +1,9 @@
 package me.ritesh.wallpapers.view.presenter;
 
 import me.ritesh.wallpapers.data.analytics.IAnalytics;
+import me.ritesh.wallpapers.view.IView;
 
-public interface Presenter<T, M> {
+public interface Presenter<T extends IView<M>, M> {
     void resume();
 
     void pause();

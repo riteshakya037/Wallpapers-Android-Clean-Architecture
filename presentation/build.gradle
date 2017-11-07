@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -60,12 +59,12 @@ dependencies {
     compile "com.android.support:design:$rootProject.ext.androidSupport"
     compile "com.android.support:percent:$rootProject.ext.androidSupport"
     compile "com.google.dagger:dagger:$rootProject.ext.dagger"
-    apt "com.google.dagger:dagger-compiler:$rootProject.ext.dagger"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.dagger"
     compile "com.jakewharton:butterknife:$rootProject.ext.butterknife"
-    apt "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknife"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknife"
     compile "com.google.firebase:firebase-core:$rootProject.ext.firebase"
     compile "org.parceler:parceler-api:$rootProject.ext.parceler"
-    apt "org.parceler:parceler:$rootProject.ext.parceler"
+    annotationProcessor "org.parceler:parceler:$rootProject.ext.parceler"
     compile "com.github.bumptech.glide:glide:$rootProject.ext.glide"
     compile "de.hdodenhof:circleimageview:$rootProject.ext.circleImageView"
 

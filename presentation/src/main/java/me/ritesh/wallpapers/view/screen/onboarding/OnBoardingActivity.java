@@ -97,7 +97,7 @@ public class OnBoardingActivity extends BaseActivity<OnBoardingScreenModule> {
         return R.layout.activity_onboarding;
     }
 
-    @Override protected Presenter getPresenter() {
+    @SuppressWarnings("unchecked") @Override protected Presenter getPresenter() {
         return onBoardingPresenter;
     }
 
@@ -140,7 +140,7 @@ public class OnBoardingActivity extends BaseActivity<OnBoardingScreenModule> {
         builder.setPositiveButton(R.string.dialog_ok, null);
         AlertDialog alertDialog = builder.show();
 
-        TextView textView = ((TextView) alertDialog.findViewById(android.R.id.message));
+        TextView textView = alertDialog.findViewById(android.R.id.message);
         if (textView != null) {
             textView.setMovementMethod(LinkMovementMethod.getInstance());
         }

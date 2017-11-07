@@ -1,7 +1,6 @@
 package me.ritesh.wallpapers.view;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -62,7 +61,7 @@ public abstract class BaseActivity<M> extends AppCompatActivity implements IView
         getPresenter().setView(this);
     }
 
-    protected abstract Presenter getPresenter();
+    protected abstract Presenter<IView<M>, M> getPresenter();
 
     @Override protected void onStop() {
         super.onStop();
@@ -91,13 +90,7 @@ public abstract class BaseActivity<M> extends AppCompatActivity implements IView
             if (errorDialog == null || !errorDialog.isShowing()) {
                 //If google play services in not available show an error dialog and return
                 errorDialog = GoogleApiAvailability.getInstance()
-                        .getErrorDialog(this, playServicesStatus, 0,
-                                new DialogInterface.OnCancelListener() {
-                                    @Override
-                                    public void onCancel(DialogInterface dialogInterface) {
-                                        finish();
-                                    }
-                                });
+                        .getErrorDialog(this, playServicesStatus, 0, dialogInterface -> finish());
                 errorDialog.show();
             }
             return false;

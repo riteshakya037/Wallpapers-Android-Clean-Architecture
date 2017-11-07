@@ -15,7 +15,7 @@ import me.ritesh.wallpapers.view.presenter.BasePresenter;
  */
 
 class OnBoardingFragmentPresenter
-        extends BasePresenter<IView, OnBoardingPageModule, OnBoardingData> {
+        extends BasePresenter<IView<OnBoardingPageModule>, OnBoardingPageModule, OnBoardingData> {
     @Inject OnBoardingFragmentPresenter(@NonNull OnBoardingPageInteractor interactor,
             @NonNull OnBoardingPageModelDataMapper modelDataMapper, IAnalytics analytics) {
         super(interactor, modelDataMapper, analytics);
